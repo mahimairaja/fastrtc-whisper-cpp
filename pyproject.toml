@@ -1,0 +1,46 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "fastrtc-whisper-cpp"
+version = "0.1.1"
+description = "Fast RTC Whisper CPP package"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Mahimai Raja", email = "night-myriad.1y@icloud.com" }]
+
+dependencies = [
+    "pywhispercpp>=1.3.1",
+    "click>=8.2.1",
+    "numpy>=2.0.2",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/mahimairaja/fastrtc-whisper-cpp"
+"Bug Tracker" = "https://github.com/mahimairaja/fastrtc-whisper-cpp/issues"
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "black",
+    "isort",
+    "pre-commit>=4.2.0",
+]
+audio = [
+    "librosa>=0.9.0",  # For audio processing
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.black]
+line-length = 88
+
+[tool.isort]
+profile = "black"
