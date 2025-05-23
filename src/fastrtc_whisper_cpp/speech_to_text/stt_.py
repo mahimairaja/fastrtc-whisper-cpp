@@ -39,6 +39,10 @@ class WhisperCppSTT(STTModel):
     def stt(self, audio: tuple[int, NDArray[np.int16 | np.float32]]) -> str:
         sr, audio_np = audio  # type: ignore
 
+        if audio_np.dtype == np.int16:
+            # Convert int16 to float32 and normalize to [-1, 1]
+            audio_np = audio_np.astype(np.float32) / 32768.0
+
         if sr != 16000:
             try:
                 import librosa
@@ -53,10 +57,6 @@ class WhisperCppSTT(STTModel):
 
         if audio_np.ndim == 1:
             audio_np = audio_np.reshape(1, -1)
-
-        if audio_np.dtype == np.int16:
-            # Convert int16 to float32 and normalize to [-1, 1]
-            audio_np = audio_np.astype(np.float32) / 32768.0
 
         segments = self.model.transcribe(audio_np)
         return " ".join(segment.text for segment in segments)
