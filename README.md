@@ -137,3 +137,6 @@ MIT
 
 
 <!-- GitAds-Verify: CDRPYNI76ZF71576X1SKGMXY7P2YWBYW -->
+## GitAds Sponsored
+[![Sponsored by GitAds](https://gitads.dev/v1/ad-serve?source=mahimairaja/fastrtc-whisper-cpp@github)](https://gitads.dev/v1/ad-track?source=mahimairaja/fastrtc-whisper-cpp@github)
+
